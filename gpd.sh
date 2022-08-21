@@ -58,24 +58,6 @@ monitor_xml_symlink() {
 sudo ln -s $HOME/.config/monitors.xml /var/lib/gdm/.config/monitors.xml
 }
 
-light_dm_rotation() {
-# Have not used this yet
-# LightDM Greeter (Login Screen) Display Rotation
-cat << EOF | sudo tee /etc/lightdm/greeter_setup.sh
-#!/bin/bash
-xrandr -o right
-for display in {"DSI1","DSI-1"}
-    do
-    xinput map-to-output "pointer:Goodix Capacative TouchScreen" $display
-done
-exit 0
-EOF
-cat << EOF | sudo tee /etc/lightdm/lightdm.conf
-[Seat:*]
-greeter-setup-script=/etc/lightdm/greeter_setup.sh
-EOF
-}
-
 arch_fixes() {
 kernel_grub_parameters
 xorg_conf
@@ -91,7 +73,6 @@ sound_intel_modprobe
 mute_key
 sleep_display
 monitor_xml_symlink
-light_dm_rotation
 }
 
 echo "Going to run $1"
