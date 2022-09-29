@@ -1,0 +1,6 @@
+#!/bin/sh
+export GRUB_CMDLINE_LINUX="${GRUB_CMDLINE_LINUX} fbcon=rotate:1 video=DSI1:panel_orientation=right_side_up video=DSI-1:panel_orientation=right_side_up ibt=off nvidia_drm.modeset=1"
+
+echo Appending GPD win max 2021 kernel parameters
+
+/etc/grub.d/10_linux
