@@ -1,0 +1,9 @@
+[Unit]
+Description=Fix screen not turning on after suspesion, for GPD Win Max 2021
+After=suspend.target hibernate.target hybrid-sleep.target suspend-then-hibernate.target
+
+[Service]
+ExecStart=/bin/xrandr --output DSI1 --auto --rotate right
+
+[Install]
+WantedBy=suspend.target hibernate.target hybrid-sleep.target suspend-then-hibernate.target
